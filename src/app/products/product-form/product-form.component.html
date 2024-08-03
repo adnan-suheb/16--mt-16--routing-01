@@ -1,0 +1,214 @@
+<mat-card>
+    <mat-card-title align="center" class="formHeading">
+        {{!isInEditMode?"Add User":"Update User"}}
+    </mat-card-title>
+    <mat-card-content>
+        <form [formGroup]="productForm" (ngSubmit)="onFormSubmit()">
+            <div class="row">
+                <!-- brand -->
+                <div class="col-md-12">
+                    <div class="control">
+                        <mat-icon>copyright</mat-icon>
+                        <mat-form-field>
+                            <mat-label>Enter Brand name</mat-label>
+                            <input type="text" matInput formControlName="brand">
+                            <mat-error>
+                                <ng-container *ngIf="control['brand'].touched && control['brand'].hasError('required')">
+                                    Brand name is required field!!!
+                                </ng-container>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <!-- model -->
+                <div class="col-md-12">
+                    <div class="control">
+                        <mat-icon>smartphone</mat-icon>
+                        <mat-form-field>
+                            <mat-label>Enter Model name</mat-label>
+                            <input type="text" matInput formControlName="model">
+                            <mat-error>
+                                <ng-container *ngIf="control['model'].touched && control['model'].hasError('required')">
+                                    Model name is required field!!!
+                                </ng-container>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <!-- image -->
+                <div class="col-md-12">
+                    <div class="control">
+                        <mat-icon>image</mat-icon>
+                        <mat-form-field>
+                            <mat-label>Enter Image URL</mat-label>
+                            <input type="text" matInput formControlName="image">
+                            <mat-error>
+                                <ng-container *ngIf="control['image'].touched && control['image'].hasError('required')">
+                                    Image URL is required field!!!
+                                </ng-container>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <!-- color -->
+                <div class="col-md-6">
+                    <div class="control">
+                        <mat-icon>palette</mat-icon>
+                        <mat-form-field>
+                            <mat-label>Enter Color</mat-label>
+                            <input type="text" matInput formControlName="color">
+                            <mat-error>
+                                <ng-container *ngIf="control['color'].touched && control['color'].hasError('required')">
+                                    Color is required field!!!
+                                </ng-container>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <!-- storage -->
+                <div class="col-md-6">
+                    <div class="control">
+                        <mat-icon>storage</mat-icon>
+                        <mat-form-field>
+                            <mat-label>Select Storage</mat-label>
+                            <mat-select formControlName="storage">
+                                <mat-option *ngFor="let storage of storageArr" [value]="storage">
+                                    {{storage}}
+                                </mat-option>
+                            </mat-select>
+                            <mat-error>
+                                <ng-container
+                                    *ngIf="control['storage'].touched && control['storage'].hasError('required')">
+                                    Storage is required field!!!
+                                </ng-container>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <!-- screen size -->
+                <div class="col-md-6">
+                    <div class="control">
+                        <mat-icon>aspect_ratio</mat-icon>
+                        <mat-form-field>
+                            <mat-label>Select Screen Size</mat-label>
+                            <mat-select formControlName="screen_size">
+                                <mat-option *ngFor="let size of screenSizeArr" [value]="size">
+                                    {{size}}
+                                </mat-option>
+                            </mat-select>
+                            <mat-error>
+                                <ng-container
+                                    *ngIf="control['screen_size'].touched && control['screen_size'].hasError('required')">
+                                    Screen Size is required field!!!
+                                </ng-container>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <!-- rating -->
+                <div class="col-md-6">
+                    <div class="control">
+                        <mat-icon>star_half</mat-icon>
+                        <mat-form-field>
+                            <mat-label>Select Ratings</mat-label>
+                            <mat-select formControlName="rating">
+                                <mat-option *ngFor="let rat of ratingArray" [value]="rat">
+                                    {{rat}}
+                                </mat-option>
+                            </mat-select>
+                            <mat-error>
+                                <ng-container
+                                    *ngIf="control['rating'].touched && control['rating'].hasError('required')">
+                                    Rating is required field!!!
+                                </ng-container>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <!-- processor -->
+                <div class="col-md-6">
+                    <div class="control">
+                        <mat-icon>memory</mat-icon>
+                        <mat-form-field>
+                            <mat-label>Enter Processor Details</mat-label>
+                            <input type="text" matInput formControlName="processor">
+                            <mat-error>
+                                <ng-container
+                                    *ngIf="control['processor'].touched && control['processor'].hasError('required')">
+                                    Processor is required field!!!
+                                </ng-container>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <!-- battery capacity -->
+                <div class="col-md-6">
+                    <div class="control">
+                        <mat-icon>battery_charging_full</mat-icon>
+                        <mat-form-field>
+                            <mat-label>Enter Battery Capacity</mat-label>
+                            <input type="text" matInput formControlName="battery_capacity">
+                            <mat-error>
+                                <ng-container
+                                    *ngIf="control['battery_capacity'].touched && control['battery_capacity'].hasError('required')">
+                                    Battery capacity is required field!!!
+                                </ng-container>
+                                <ng-container
+                                    *ngIf="control['battery_capacity'].dirty && control['battery_capacity'].hasError('pattern')">
+                                    Special and alphabetical characters not allowed!!!
+                                </ng-container>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <!-- price -->
+                <div class="col-md-6">
+                    <div class="control">
+                        <mat-icon>currency_rupee</mat-icon>
+                        <mat-form-field>
+                            <mat-label>Enter Price</mat-label>
+                            <input type="text" matInput formControlName="price">
+                            <mat-error>
+                                <ng-container *ngIf="control['price'].touched && control['price'].hasError('required')">
+                                    Price is required field!!!
+                                </ng-container>
+                                <ng-container *ngIf="control['price'].dirty && control['price'].hasError('pattern')">
+                                    Special and alphabetical characters not allowed!!!
+                                </ng-container>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <!-- can return status -->
+                <div class="col-md-6">
+                    <div class="control">
+                        <mat-icon>keyboard_return</mat-icon>
+                        <mat-form-field>
+                            <mat-label>Select Can Return Status</mat-label>
+                            <mat-select formControlName="canReturn">
+                                <mat-option value="0">0</mat-option>
+                                <mat-option value="1">1</mat-option>
+
+                            </mat-select>
+                            <mat-error>
+                                <ng-container
+                                    *ngIf="control['canReturn'].touched && control['canReturn'].hasError('required')">
+                                    Can Return Status is required field!!!
+                                </ng-container>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="d-flex justify-content-around align-items-center">
+                <button type="submit" *ngIf="!isInEditMode" mat-raised-button color="primary">Add Product</button>
+                <button type="button" *ngIf="isInEditMode" mat-raised-button (click)="updateProduct()"
+                    [disabled]="canReturn==='0'" color="primary">Update Product</button>
+                <button type="button" mat-raised-button (click)="onCancel()" color="warn">Cancel</button>
+
+            </div>
+        </form>
+    </mat-card-content>
+</mat-card>

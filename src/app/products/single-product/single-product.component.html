@@ -1,0 +1,50 @@
+<mat-card class="mt-5">
+    <mat-card-content>
+        <div class="productCard">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="image">
+                        <img [src]="prodObj.image" [alt]="prodObj.model">
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="name">
+                        <h3>{{prodObj.brand}} {{prodObj.model}}</h3>
+                        <h5>({{prodObj.color}}, {{prodObj.storage}})
+                            <span [ngClass]="{
+                                'bg-success':prodObj.rating>=4,
+                                'bg-warning':prodObj.rating<4 && prodObj.rating>=3,
+                                    'bg-danger':prodObj.rating<3
+                            }">{{prodObj.rating}}</span>
+                        </h5>
+                    </div>
+                    <div class="features">
+                        <ul>
+                            <li>{{prodObj.battery_capacity}} mAh</li>
+                            <li>{{prodObj.processor}}</li>
+                            <li>{{prodObj.screen_size}} inches.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="priceSec">
+                        <div class="price">
+                            <mat-icon>currency_rupee</mat-icon>
+                            <h4 class="mb-0">{{prodObj.price}}</h4>
+                        </div>
+                        <img src="https://static-assets-web.flixcart.com/fk-p-linchpin-web/fk-cp-zion/img/fa_62673a.png"
+                            alt="image">
+                        <h6 class="mb-0">Free Delivery</h6>
+                        <p>Save Extra With Combo Offers</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </mat-card-content>
+    <mat-card-actions class="mx-4 my-2">
+        <div class="w-100 d-flex justify-content-between">
+            <button mat-raised-button (click)="onEditProd()" color="primary">Edit Product</button>
+            <button mat-raised-button (click)="onRemove()" color="warn">Remove</button>
+        </div>
+    </mat-card-actions>
+</mat-card>

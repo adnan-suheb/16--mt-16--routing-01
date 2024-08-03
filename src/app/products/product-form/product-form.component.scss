@@ -1,0 +1,21 @@
+@import "../../../assets/scss/mixin";
+@import "../../../assets/scss/var";
+
+
+.formHeading{
+    text-transform: capitalize !important;
+    @include heading;
+}
+
+.control{
+    display: flex;
+    align-items: center;
+    margin: 10px 20px;
+
+    mat-icon{
+        margin-right: 10px;
+    }
+    mat-form-field{
+        width: 90%;
+    }
+}
